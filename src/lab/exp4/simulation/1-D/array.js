@@ -48,10 +48,13 @@ window.view = {
 		return inputValue
 	},
 	activateEvents: function() {
+		this.addClickEvent('btnRandom', function() { view.disableButton("userInput") })
+		this.addClickEvent('btnManual', function() { view.enableButton("userInput") })
 		this.addClickEvent('btnOk', function() { view.proceedToStartButton() })
 		this.addClickEvent('btnStart', function() { view.displayElements() })
 		this.addClickEvent('btnNext', function() { view.sortArray() })
 	},
+	
 	proceedToStartButton: function() {
 		var userInput = this.getArraySize()
 		if( isNaN( userInput ) === false ) {
@@ -83,8 +86,10 @@ window.view = {
 	},
 	takeInputFromRadioBox: function() {
 		var element = document.getElementsByName('radio_group')
-		if ( element[0].checked )
-			this.generateRandomNumbers()
+		if ( element[0].checked ){
+			this.generateRandomNumbers();
+			
+		}
 		else if (element[1].checked)
 			this.getUserInput()
 	},
