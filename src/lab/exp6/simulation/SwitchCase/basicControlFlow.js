@@ -247,6 +247,16 @@ window.view = {
 				this.setInnerHtml('outputDayId', 'HOLIDAY');
 	 		}
 	 	}
+	 	if(model.inputNumber === 0){
+	 		if (this.nextSiblingElement.id === 'holidayId')
+				this.codeExecutionWithColourAndId('elseIfId');
+	 		else if (this.nextSiblingElement.id === 'workingdayId') 
+				this.codeExecutionWithColourAndId('elseId');
+	 		else if (this.nextSiblingElement.id === 'invalidIPId') {
+				this.codeExecutionWithColour();
+				this.setInnerHtml('outputDayId', 'INVALID INPUT');
+	 		}
+	 	}
 		if (this.nextSiblingElement.id === 'ifId')
 			this.codeExecutionWithColour();
 		if (this.nextSiblingElement.id === 'closeBrc2Id' || this.nextSiblingElement.id === 'elseId' || this.nextSiblingElement.id === 'elseIfId') {
