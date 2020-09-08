@@ -167,17 +167,35 @@ window.view = {
     	this.clearDivs()
     	var selected_loop = this.getSelectedLoop()
 		var inputValue = document.getElementById('simpleLoopInput').value
-		if (selected_loop === 'for' && inputValue !== '' && !isNaN(model.inp) )
+		if (selected_loop === 'for' && inputValue !== ''  && !isNaN(model.inp) )
 		{
+			if(inputValue <= 20 && inputValue >= 0)
 			this.displayLoop('forLoopContent', 'codeContentFor1')
+			else{
+				alert('Invalid input');
+				return false;
+			}
 		}
+		
+		
 		if (selected_loop === 'while' && inputValue !== '' && !isNaN(model.inp))
 		{
+			if(inputValue <= 20 && inputValue >= 0)
 			this.displayLoop('whileLoopContent', 'codeContentWhile1')
+			else{
+				alert('Invalid input');
+				return false;
+			}
+			
 		}
 		if (selected_loop === 'do-while' && inputValue !== '' && !isNaN(model.inp))
 		{
-		 	this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
+			if(inputValue <= 20 && inputValue >= 0)
+			this.displayLoop('dowhileLoopContent', 'codeContentDoWhile1')
+			else{
+				alert('Invalid input');
+				return false;
+			}
 		}
 		this.disableButton('btnStart')
 		this.changeClass( 'btnStart', 'buttonDisable startButton')
@@ -278,6 +296,7 @@ window.view = {
 		var inputValue = document.getElementById('nestedLoopInput').value
 		if ( inputValue !== '' && !isNaN(model.nestedInp) )
 		{
+			if(inputValue <= 20 && inputValue >=0){
 			this.displayLoop('nestedLoopContent', 'codeContentNested1')
 			document.getElementById('resultDisplay').innerHTML += '<br>'
 			this.copy = model.nestedInp
@@ -286,6 +305,11 @@ window.view = {
 			this.enableButton('nestedNextBtn')
 			this.changeClass( 'nestedNextBtn', 'button nextButton')
 			this.disableButton('nestedLoopInput')
+			}
+			else{
+				alert('Invalid input');
+				return false
+			}
 		}	
 	},	
 	processNestedLoopStep: function(stepId) {
